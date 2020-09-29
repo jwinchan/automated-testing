@@ -30,8 +30,8 @@ describe Deck do
       expect(@deck).must_respond_to :shuffle
     end
 
-    it "returns an accurate count using count method" do
-
+    it "uses count method" do
+      expect(@deck).must_respond_to :count
     end
 
   end

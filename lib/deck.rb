@@ -21,6 +21,7 @@ class Deck
 
   def shuffle
     # shuffles the deck
+    @cards.shuffle
   end
 
   def count
