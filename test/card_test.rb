@@ -1,4 +1,5 @@
 require_relative 'test_helper'
+require_relative '../lib/card.rb'
 
 describe Card do
   describe "You can create a Card instance" do
@@ -26,6 +27,8 @@ describe Card do
     it "to_s returns a readable String value logically for values 2-10" do
       # Test to ensure that to_s works for cards values 2-10
       # for example:  "2 of diamonds"
+      card = Card.new(2, :diamonds)
+      expect(card.to_s).must_equal "2 of diamonds"
     end
 
     it "to_s returns a readable String value for Ace, Jack, Queen, King" do
@@ -40,6 +43,8 @@ describe Card do
       #  11: Jack
       #  12: Queen
       #  13: King
+      card = Card.new(11, :hearts)
+      expect(card.to_s).must_equal "Jack of hearts"
     end
   end
 
@@ -47,11 +52,18 @@ describe Card do
 
     it "Can retrieve the value of the card using a `.value`." do
       # ensure that `.value works as expected`
+      value = 3
+      suit = :spades
+      card = Card.new(value, suit)
+      expect(card.value).must_equal value
     end
 
     it "Can retrieve the value of the card using a `.suit`." do
       # ensure that `.suit works as expected returning the symbol of the suit`
-
+      value = 3
+      suit = :spades
+      card = Card.new(value, suit)
+      expect(card.suit).must_equal suit
     end
   end
 
