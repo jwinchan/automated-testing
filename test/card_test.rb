@@ -2,6 +2,7 @@ require_relative 'test_helper'
 require_relative '../lib/card.rb'
 
 describe Card do
+
   describe "You can create a Card instance" do
 
     it "Can be created" do
@@ -29,6 +30,7 @@ describe Card do
       # for example:  "2 of diamonds"
       card = Card.new(2, :diamonds)
       expect(card.to_s).must_equal "2 of diamonds"
+      expect(Card.new(4, :hearts).to_s).must_equal "4 of hearts"
     end
 
     it "to_s returns a readable String value for Ace, Jack, Queen, King" do
@@ -45,6 +47,7 @@ describe Card do
       #  13: King
       card = Card.new(11, :hearts)
       expect(card.to_s).must_equal "Jack of hearts"
+      expect(Card.new(13,:clubs).to_s).must_equal "King of clubs"
     end
   end
 
@@ -52,18 +55,22 @@ describe Card do
 
     it "Can retrieve the value of the card using a `.value`." do
       # ensure that `.value works as expected`
-      value = 3
-      suit = :spades
-      card = Card.new(value, suit)
-      expect(card.value).must_equal value
+      [:hearts, :spades, :clubs, :diamonds].each do |suit|
+        (1..13).each do |value|
+          card = Card.new(value, suit)
+          expect(card.value).must_equal value
+        end
+      end
     end
 
     it "Can retrieve the value of the card using a `.suit`." do
       # ensure that `.suit works as expected returning the symbol of the suit`
-      value = 3
-      suit = :spades
-      card = Card.new(value, suit)
-      expect(card.suit).must_equal suit
+      [:hearts, :spades, :clubs, :diamonds].each do |suit|
+        (1..13).each do |value|
+          card = Card.new(value, suit)
+          expect(card.suit).must_equal suit
+        end
+      end
     end
   end
 
