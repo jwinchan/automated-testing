@@ -16,7 +16,7 @@ class Deck
 
   def draw
     # returns a card
-    @cards.delete_at(@cards.sample)
+    return @cards.pop
   end
 
   def shuffle
